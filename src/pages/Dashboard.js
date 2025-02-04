@@ -29,52 +29,50 @@ function Dashboard() {
   };
 
   return (
-    <div className="min-h-screen p-8 bg-gradient-to-r from-yellow-400 to-orange-600">
-      <div className="container mx-auto">
-        <h1 className="text-4xl font-bold text-white mb-8">Job Dashboard</h1>
-        <form className="mb-8 bg-white p-6 rounded-lg shadow-lg" onSubmit={addJob}>
-          <div className="flex mb-4">
-            <input
-              className="p-3 border border-gray-300 rounded-lg mr-2 flex-1 focus:outline-none focus:ring-2 focus:ring-orange-500"
-              type="text"
-              name="title"
-              placeholder="Job Title"
-              value={newJob.title}
-              onChange={handleNewJobChange}
-              required
-            />
-            <input
-              className="p-3 border border-gray-300 rounded-lg flex-1 focus:outline-none focus:ring-2 focus:ring-orange-500"
-              type="text"
-              name="description"
-              placeholder="Job Description"
-              value={newJob.description}
-              onChange={handleNewJobChange}
-              required
-            />
-          </div>
-          <button type="submit" className="bg-orange-500 text-white py-3 px-6 rounded-lg hover:bg-orange-600 transition duration-300">
-            Post Job
-          </button>
-        </form>
+    <div className="min-h-screen p-8 bg-gray-100">
+      <h1 className="text-3xl font-bold mb-6">Job Dashboard</h1>
+      <form className="mb-8" onSubmit={addJob}>
+        <div className="flex mb-4">
+          <input
+            className="p-2 border rounded mr-2 flex-1"
+            type="text"
+            name="title"
+            placeholder="Job Title"
+            value={newJob.title}
+            onChange={handleNewJobChange}
+            required
+          />
+          <input
+            className="p-2 border rounded flex-1"
+            type="text"
+            name="description"
+            placeholder="Job Description"
+            value={newJob.description}
+            onChange={handleNewJobChange}
+            required
+          />
+        </div>
+        <button type="submit" className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600">
+          Post Job
+        </button>
+      </form>
 
-        <ul className="space-y-4">
-          {jobs.map((job) => (
-            <li key={job.id} className="bg-white p-6 rounded-lg shadow-lg">
-              <h2 className="text-xl font-semibold">{job.title}</h2>
-              <p className="text-gray-700">{job.description}</p>
-              <button
-                className={`mt-4 py-2 px-6 rounded-lg ${
-                  job.isApplied ? "bg-red-500" : "bg-blue-500"
-                } text-white hover:opacity-90 transition duration-300`}
-                onClick={() => toggleApplication(job.id)}
-              >
-                {job.isApplied ? "Withdraw Application" : "Apply"}
-              </button>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <ul className="space-y-4">
+        {jobs.map((job) => (
+          <li key={job.id} className="bg-white p-4 rounded shadow">
+            <h2 className="text-xl font-semibold">{job.title}</h2>
+            <p className="text-gray-700">{job.description}</p>
+            <button
+              className={`mt-2 py-2 px-4 rounded ${
+                job.isApplied ? "bg-red-500" : "bg-blue-500"
+              } text-white hover:opacity-90`}
+              onClick={() => toggleApplication(job.id)}
+            >
+              {job.isApplied ? "Withdraw Application" : "Apply"}
+            </button>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

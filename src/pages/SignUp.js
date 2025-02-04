@@ -6,7 +6,12 @@ function SignUp() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // Simulate user sign-up logic
     navigate("/dashboard");
+  };
+
+  const handleLoginNavigation = () => {
+    navigate("/login");
   };
 
   return (
@@ -37,6 +42,17 @@ function SignUp() {
             Sign Up
           </button>
         </form>
+        <div className="mt-6 text-center">
+          <p className="text-gray-600">
+            Already have an account?{" "}
+            <button
+              onClick={handleLoginNavigation}
+              className="text-indigo-500 hover:underline focus:outline-none"
+            >
+              Log In
+            </button>
+          </p>
+        </div>
       </div>
     </div>
   );
